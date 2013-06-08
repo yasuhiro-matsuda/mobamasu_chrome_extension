@@ -1,0 +1,19 @@
+﻿﻿﻿﻿﻿{
+    // 拡張機能の名前
+    "name": "モバマスBOT",
+    // この拡張機能のバージョン
+    "version": "1.0",
+    // Chrome拡張のマニフェストのバージョン
+    "manifest_version": 2,
+    // この拡張機能の簡単な説明
+    "description": "モバマスの仕事とか自動で行います。",
+    // 裏で勝手に走ります
+    "content_scripts": [
+        {
+            // URLがこの条件に一致する時に発動
+            "matches": ["http://sp.pf.mbga.jp/12008305/*event_date*"],
+            // 走るスクリプト
+            "js": ["jquery-2.0.2.min.js", "mobamasu.js"]
+        }
+    ]
+}
