@@ -2,8 +2,20 @@
 $(function(){
     // コンソールにログを吐きます(ChromeをアクティブにしてF12押してConsoleタブ見るといい！)
     console.log("モバマスBOT開始！");
-    // フラッシュの時とかに
-    var url = "http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fevent_date%2Fmission_list%2F%3Fstage%3D4%26rnd%3D400584661";
+    var url = location.href;
+    // フラッシュや予期せぬページに飛ばされた時に戻るページ
+    var redirectUrl;
+    // 機能にあった遷移先をセット。対応していないページでは何もしない
+    if (url.indexOf("quests") !== -1) {
+        // 通常の仕事(常に最新のフロア)の画面
+        redirectUrl = "http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fquests%3Fl_frm%3DMypage_2%26rnd%3D194435151";
+    } else if (url.indexOf("event_date") !== -1) {
+        // アイドルプロデュース開催時の4人目のクエスト画面
+        redirectUrl = "http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fevent_date%2Fmission_list%2F%3Fstage%3D4%26rnd%3D400584661";
+    } else {
+        console.log("モバマスBOT終了！");
+        return;
+    }
     // 2～4秒待ってからサブミットする。BOTフィルター回避用。あるのか知らんけど。回避できるかも謎だけど！
     var waitMilliSeconds = 2000 + Math.floor(Math.random() * 2000);
     // 制限に達した時に表示される内容
@@ -28,8 +40,9 @@ $(function(){
         // 普通に違うページに移動させるとReferer(どこから来たのかを示す情報)が渡ってしまって
         // 不正遷移とみなされそうなので、その情報を落として移動させる
         } else {
-            location='data:text/html;charset=utf-8,<html><script>location.replace("' + url +'");</script></html>';
+            location='data:text/html;charset=utf-8,<html><script>location.replace("' + redirectUrl +'");</script></html>';
             console.log("最初のページに戻るお");
         }
+        console.log("モバマスBOT終了！");
     }, waitMilliSeconds);
 });

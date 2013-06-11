@@ -11,7 +11,7 @@
     "content_scripts": [
         {
             // URLがこの条件に一致する時に発動
-            "matches": ["http://sp.pf.mbga.jp/12008305/*event_date*"],
+            "matches": ["http://sp.pf.mbga.jp/12008305/*"],
             // 走るスクリプト
             "js": ["jquery-2.0.2.min.js", "mobamasu.js"]
         }
