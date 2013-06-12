@@ -6,7 +6,7 @@ $(function(){
     // フラッシュや予期せぬページに飛ばされた時に戻るページ
     var redirectUrl;
     // 機能にあった遷移先をセット。対応していないページでは何もしない
-    if (url.indexOf("quests") !== -1) {
+    if (url.indexOf("quests") !== -1 || url.indexOf("quest_boss") !== -1) {
         // 通常の仕事(常に最新のフロア)の画面
         redirectUrl = "http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fquests%3Fl_frm%3DMypage_2%26rnd%3D194435151";
     } else if (url.indexOf("event_date") !== -1) {
