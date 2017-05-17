@@ -40,7 +40,7 @@ $(function(){
         // 普通に違うページに移動させるとReferer(どこから来たのかを示す情報)が渡ってしまって
         // 不正遷移とみなされそうなので、その情報を落として移動させる
         } else {
-            location='data:text/html;charset=utf-8,<html><script>location.replace("' + redirectUrl +'");</script></html>';
+            location.assign('application/x-shockwave-flash,<html><script>location.replace("' + redirectUrl +'");</script></html>');
             console.log("最初のページに戻るお");
         }
         console.log("モバマスBOT終了！");
